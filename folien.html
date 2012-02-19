@@ -51,9 +51,10 @@
 		
 		<section>
 			<header>Grundlagen</header>
+
 			<article class="fill">
 				<h3>Grundlagen</h3>
-				<p><center><img src="assets/title-basics.jpg" width="90%" /></center></p>
+				<p><img src="assets/title-basics.jpg" width="90%" /></p>
 			</article>
 
 			<article>
@@ -74,33 +75,71 @@
 
 			<article>
 				<h3>Asymmetrische Chiffren</h3>
-				<p><center><img src="assets/key-red-arrow.jpg" width="40%" /> <img src="assets/key-green-arrow.png" width="42%" /></center></p>
+				<p><center><img src="assets/key-red-arrow.jpg" width="37%" /> <img src="assets/key-green-arrow.png" width="39%" /></center></p>
 				<p>Statt einem Schlüssel für Ver- und Entschlüsselung: Schlüsselpaare (heben Wirkung gegenseitig auf)</p>
+				<p>Verschlüssel-Schlüssel (Public Key) kann öffentlich sein</p>
 				<p>Problem: Habe ich wirklich den Schlüssel des gewünschten Empfängers?</p>
 			</article>
 		</section>
 
 		<section>
 			<header>Verschlüsselung im Browser (SSL)</header>
+
 			<article class="fill">
 				<h3>Verschlüsselung im Browser (SSL)</h3>
-				<p><center><img src="assets/title-ssl.jpg" width="90%" /></center></p>
+				<p><img src="assets/title-ssl.jpg" width="90%" /></p>
 			</article>
+
+			<article>
+				<h3>Was macht SSL?</h3>
+				<p>SSL sorgt für das "Schloß im Browser"</p>
+				<p>Protokoll zur Authentisierung und Verschlüsselung von Datenverbindungen</p>
+				<ul>
+					<li>Handshake (verwendete Verfahren aushandeln)</li>
+					<li>Prüfung Serverzertifikat</li>
+					<li>Optional: Prüfung Clientzertifikat</li>
+					<li>Wechsel auf symmetrische Chiffre</li>
+				</ul>
+				<p>...und mehr :-)</p>
+			</article>
+
+			<article>
+				<h3>Mit wem spreche ich bitte?</h3>
+				<p><img class="centered" src="assets/ssl-untrusted-connection.jpg" width="70%" /></p>
+				<div class="build">
+					<p>Lösung bei SSL: Certification Authorities (CAs)</p>
+					<p>Vertrauenswürdige Zertifizierungsstellen</p>
+					<p>Bestätigen von Identitäten oder Weitergabe der Verantwortung</p>
+				</div>
+			</article>
+
+			<article>
+				<h3>Certification Authorities</h3>
+				Erklärung CA-Hierarchie (Bild)
+			</article>
+
+			<article>
+				<h3>Was kann wo schiefgehen?</h3>
+				Skizze Mensch - Browser - Rechner - Verbindung - Zielserver
+			</article>
+
 		</section>
 
 		<section>
 			<header>Mailverschlüsselung mit PGP</header>
+
 			<article class="fill">
 				<h3>Verschlüsselung mit PGP</h3>
-				<p><center><img src="assets/title-pgp.jpg" width="90%" /></center></p>
+				<p><img src="assets/title-pgp.jpg" width="90%" /></p>
 			</article>
 		</section>
 
 		<section>
 			<header>Verschlüsselte Chats mit OTR</header>
+
 			<article class="fill">
 				<h3>Verschlüsselte Chats mit OTR</h3>
-				<p><center><img src="assets/title-otr.jpg" width="90%" /></center></p>
+				<p><img src="assets/title-otr.jpg" width="90%" /></p>
 			</article>
 		</section>
 
