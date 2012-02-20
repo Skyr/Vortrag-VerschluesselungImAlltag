@@ -1,6 +1,6 @@
 #!/bin/sh
 EMPTY=""
-for i in *.jpg ; do
+for i in $* ; do
 	COMMENT=`exiv2 -q -Pt -g Exif.Photo.UserComment $i`
 	if [ -n "$COMMENT" ] ; then
 		LINK=`echo $COMMENT | sed "s/^.*Source: \([^ ]*\).*$/\1/"`

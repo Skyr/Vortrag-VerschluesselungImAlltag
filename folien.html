@@ -26,7 +26,9 @@
 	<link href="lib/cccs/cccs.css" media="screen" rel="stylesheet" type="text/css" />
 	<meta charset='utf-8'>
 	<script src='lib/slides.js'></script>
-
+	<style type="text/css">
+		.label {position:absolute;padding:2px;background-color:rgba(255,255,255,0.6);box-shadow:1px 1px 2px 2px rgba(0,0,0,0.4)}
+	</style>
 	<title>Verschlüsselung im Alltag</title>
 </head>
 
@@ -107,20 +109,44 @@
 				<h3>Mit wem spreche ich bitte?</h3>
 				<p><img class="centered" src="assets/ssl-untrusted-connection.jpg" width="70%" /></p>
 				<div class="build">
-					<p>Lösung bei SSL: Certification Authorities (CAs)</p>
-					<p>Vertrauenswürdige Zertifizierungsstellen</p>
-					<p>Bestätigen von Identitäten oder Weitergabe der Verantwortung</p>
+					<section>
+						<p>Lösung bei SSL: Certification Authorities (CAs)</p>
+						<p>Vertrauenswürdige Zertifizierungsstellen</p>
+						<p>Bestätigen von Identitäten oder Weitergabe der Verantwortung</p>
+					</section>
 				</div>
 			</article>
 
 			<article>
 				<h3>Certification Authorities</h3>
-				Erklärung CA-Hierarchie (Bild)
+				<p><img class="centered" src="assets/ca-hierarchy.svg" width="60%" />
+				<div class="build">
+					<div class="label" style="left:51%;top:23%">Root-CA</div>
+					<div class="label" style="left:8%;top:62%">Zertifikatsempfänger</div>
+					<div class="label" style="left:50%;top:51%">Intermediate CAs</div>
+				</div>
+				</p>
 			</article>
 
 			<article>
 				<h3>Was kann wo schiefgehen?</h3>
-				Skizze Mensch - Browser - Rechner - Verbindung - Zielserver
+				<p>Die Kette der Beteiligten:</p>
+				<p><center><img src="assets/ssl-chain-user.jpg" width="27%" align="absmiddle" style="margin-top:2%;margin-bottom:2%" /> &rarr;
+				<img src="assets/ssl-chain-browser.jpg" width="27%" align="absmiddle" style="margin-top:2%;margin-bottom:2%" /> &rarr;
+				<img src="assets/ssl-chain-computer.jpg" width="27%" align="absmiddle" style="margin-top:2%;margin-bottom:2%" /> &rarr;
+				<img src="assets/ssl-chain-net.jpg" width="27%" align="absmiddle" style="margin-top:2%;margin-bottom:2%" /> &rarr;
+				<img src="assets/ssl-chain-server.jpg" width="27%" align="absmiddle" style="margin-top:2%;margin-bottom:2%" /></center></p>
+			</article>
+
+			<article>
+				<h3>Was kann wo schiefgehen?</h3>
+				<ul>
+				<li>Mensch: Social engineering, falscher Link, ...
+				<li>Browser: "Man in the browser": Böses Plugin, falsches Zertifikat, manipulierte Einstellungen
+				<li>Rechner: Malware (Keylogger, ...)
+				<li>Verbindung: Man in the middle (abhören, verändern)
+				<li>Zielrechner: Kompromittiert
+				</ul>
 			</article>
 
 		</section>
@@ -155,6 +181,11 @@
 					<li><a href="http://www.flickr.com/photos/cizake/4164756091/">"True phone"</a> CC BY-NC-SA Florian Seroussi</li>
 					<li><a href="http://www.flickr.com/photos/zappowbang/2048577203/">"Sealed"</a> CC BY Justin Henry</li>
 					<li><a href="http://www.flickr.com/photos/merlincheng/3611200132/">"Facebook Blues"</a> CC BY-NC Merlin Alexander Cheng</li>
+					<li><a href="http://www.flickr.com/photos/mujitra/3689789988/">"Fuck'n IE7"</a> CC BY Miki Yoshihito</li>
+					<li><a href="http://www.flickr.com/photos/photobysimon/3260876496/">"Cisco MDS Fabric Switch"</a> CC BY LiSimonPix</li>
+					<li><a href="http://www.flickr.com/photos/torkildr/3462606643/">"Server room at CERN"</a> CC BY-SA Torkild Retvedt</li>
+					<li><a href="http://www.flickr.com/photos/ngernelle/3250962087/">"Undead geek"</a> CC BY Nourdine Gernelle</li>
+					<li><a href="http://www.flickr.com/photos/jimwhimpey/271115180/">"Desktop 20061016"</a> CC BY Jim Whimpey</li>
 				</ul>
 			</article>
 		</section>
