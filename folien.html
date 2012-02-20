@@ -141,14 +141,17 @@
 			<article>
 				<h3>Was kann wo schiefgehen?</h3>
 				<ul>
-				<li>Mensch: Social engineering, falscher Link, ...
-				<li>Browser: "Man in the browser": Böses Plugin, falsches Zertifikat, manipulierte Einstellungen
-				<li>Rechner: Malware (Keylogger, ...)
-				<li>Verbindung: Man in the middle (abhören, verändern)
-				<li>Zielrechner: Kompromittiert
+				<li>Mensch: Social engineering, falscher Link, ...</li>
+				<li>Browser: "Man in the browser": Böses Plugin, falsches Zertifikat, manipulierte Einstellungen</li>
+				<li>Rechner: Malware (Keylogger, ...)</li>
+				<li>Verbindung: Man in the middle (abhören, verändern)</li>
+				<li>Zielrechner: Kompromittiert</li>
 				</ul>
 			</article>
 
+			<article>
+				<h3>Convergence - Alternative zur CA</h3>
+			</article>
 		</section>
 
 		<section>
@@ -158,6 +161,54 @@
 				<h3>Verschlüsselung mit PGP</h3>
 				<p><img src="assets/title-pgp.jpg" width="90%" /></p>
 			</article>
+
+			<article>
+				<h3>Schlüssel und Keyserver</h3>
+				Schlüssel generieren, unterschiedliche Verfahren, Key-ID und Fingerprint, Keyserver als Telefonbuch, Mailadresse dort sichtbar (Spam!)
+			</article>
+
+			<article>
+				<h3>Web of Trust</h3>
+				Problem: Habe ich den richtigen Schlüssel?
+				Keine zentrale Instanz wie bei SSL, sondern Web of Trust
+				Direkte Authentisierung durch Signieren von Schlüsseln
+				Indirekte Authentisierung durch Vertrauen in Zuverlässigkeit anderer
+			</article>
+
+			<article>
+				<h3>Direktes Vertrauen: Schlüssel signieren</h3>
+				Überprüfung der Identität, Abgleich mit Schlüsseldaten
+				Signieren, Angeben über Genauigkeit der Prüfung
+				Festlegen des Vertrauensgrads in die Sorgfalt bei der Prüfung anderer
+			</article>
+
+			<article>
+				<h3>Transitives Vertrauen: Web of Trust</h3>
+				Festlegen des Vertrauensgrads in die Sorgfalt bei der Prüfung anderer
+				"Parital trust" und "Full trust"
+				Schlüssel mit Signaturen von jemandem mit "Full trust" werden als veriziert betrachtet
+				Schlüssel mit Signaturen zwei Leuten mit "Partial trust" werden als veriziert betrachtet
+				Als verifiziert betrachtete Schlüssel können wiederum weitere Schlüssel verifizieren, wenn diesen ensprechendes Vertrauen ausgesprochen wird (siehe 1. Schritt)
+			</article>
+
+			<article>
+				<h3>Web of Trust - Beispiele</h3>
+			</article>
+
+			<article>
+				<h3>"Pseudo-CAs"</h3>
+				Mit Web of Trust kann das CA-Modell nachgebildet werden (nicht aber umgekehrt)
+				Beispiele: Heise-Kryptokampagne, CAcert
+			</article>
+
+			<article>
+				<h3>Keysigning Party - möglicher Ablauf</h3>
+				Im Vorfeld: Sammeln der Schlüssel aller Teilnehmer
+				Organisator erstellt Liste mit Schlüssel-ID und Fingerprint, Kopie für jeden Teilnehmer
+				Alle Teilnehmer treffen sich, jeder kann sich (z.B. per Personalausweis) ausweisen
+				Aufstellen in zwei Reihen, jeder überprüft sein Gegenüber (auf seiner Kopie der Liste markieren), dann eine Person nach rechts wechseln
+				Zu Hause: Überprüfte Schlüssel signieren und wieder auf Schlüsselserver hochladen
+			</article>
 		</section>
 
 		<section>
@@ -166,6 +217,56 @@
 			<article class="fill">
 				<h3>Verschlüsselte Chats mit OTR</h3>
 				<p><img src="assets/title-otr.jpg" width="90%" /></p>
+			</article>
+
+			<article>
+				<h3>Off The Record Nachrichtenprotokoll</h3>
+				"Overlay-Protokoll" über jedem (beliebigen) Chatprotokoll
+				Als Plugin für verschiedene Chatclients verfügbar
+				Sendet und erkennt speziell formatierte Textnachrichten
+			</article>
+
+			<article>
+				<h3>Aufbau der Verbindung</h3>
+				Bei der ersten Nutzung: Public-Key-Paar generieren
+				Verbindungsaufbau manuell oder durch automatische Erkennung (charakteristische Folge von Whitespace am Ende einer normalen Nachricht)
+				Aushandeln eines Sitzungsschlüssels
+				Dann: Unauthentisierte Verbindung
+			</article>
+
+			<article>
+				<h3>Überprüfung seines Gegenübers</h3>
+				Wieder dieselbe Frage: Spreche ich mit dem richtigen?
+				Authentisierung über zweiten Kanal (z.B. Telefon), Austausch von Fingerprints
+				Information über erfolgreiche Überprüfung wird lokal gespeichert
+				Kein Web of Trust, etc.
+			</article>
+
+			<article>
+				<h3>Vorsichtsmaßnahmen</h3>
+				Beim Beenden einer Verbindung: Aufpassen, daß man nicht versehentlich unverschlüsselt weitertippt
+				Manche Clients verhindern dies
+				Vorsicht: Chatprotokolle werden im Klartext gespeichert (aktuelles Negativbeispiel: <a href="http://www.gulli.com/news/17735-bradley-manning-vierter-tag-der-anhoerung-7-update-2011-12-20">Bradley Manning</a>)
+			</article>
+		</section>
+
+		<section>
+			<header>Fazit</header>
+
+			<article class="fill">
+				<h3>Fazit</h3>
+				<p><img src="assets/title-fazit.jpg" width="90%" /></p>
+			</article>
+
+			<article>
+				<h3>Fazit</h3>
+				<ul>
+				<li>Für jede Art von Sicherheit: Eine vertrauenswürdige (nichtkompromittierte) Umgebung ist nötig</li>
+				<li>Ernsthafte Security ist kein Ponyhof. Regeln und Verfahren sind zwingend einzuhalten</li>
+				<li>Selbstcheck: Was ist das eigene Sicherheitsbedürfnis?</li>
+				<li><em>Si vis pacem, para bellum</em> - eine Aversion gegen Gutgläubigkeit ist selten schädlich</li>
+				<li>Preparedness: Sollte man in die Situation geraten, ernsthafte Sicherheit zu benötigen, ist es zu spät für Vorbereitungsmaßnahmen</li>
+				</ul>
 			</article>
 		</section>
 
