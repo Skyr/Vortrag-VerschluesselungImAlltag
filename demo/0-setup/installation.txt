@@ -1,0 +1,3 @@
+Backtrack in Virtualbox installieren. 2 Netzwerk-Interfaces:
+1. Interface: Host-only adpater
+2. Interface: Bridged adapter

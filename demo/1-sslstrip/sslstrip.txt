@@ -1,0 +1,12 @@
+In Backtrack:
+- Prüfen, ob Defaultroute auf Bridged Device
+- SSL-Strip herunterladen und entpacken
+- IP-Forwarding an
+- IP-Tables-Prerouting-Eintrag gemäß README
+- sslstrip starten, Protokoll in Logdatei schreiben
+
+In Hostsystem:
+- Defaultroute löschen
+- Defaultroute auf Host-Only-Interface setzen
+- Profit :-)
+

@@ -139,6 +139,96 @@
 			</article>
 
 			<article>
+				<h3>Was schiefgehen kann: Benutzer</h3>
+				<p><img src="assets/ssl-chain-user.jpg" width="25%" align="right" />
+				Sicherheit fängt immer beim Benutzer an!</p>
+				<p>Verwenden der falschen Adresse:
+					<ul>
+						<li>Vertippen, absichtlich ähnliche URLs<br />(googel.de vs. google.de,<br />y0utube.com vs. youtube.com)</li>
+						<li>Social Engineering: z.B. Links in Phishing-Mails (z.B. so: <a href="http://www.youtube.com/watch?v=XZ5TajZYW6Y">http://www.youtube.com/watch?v=HUEvRyemKSg</a>)</li>
+					</ul>
+				</p>
+				<p>Falsches Verhalten:
+					<ul>
+						<li>Ignorieren von Sicherheitswarnungen</li>
+					</ul>
+				</p>
+			</article>
+
+			<article>
+				<h3>Was schiefgehen kann: Eigener Rechner, Zielrechner</h3>
+				<p><img src="assets/ssl-chain-server.jpg" width="25%" align="right" />
+				Eigener Rechner: Infektion mit Malware, Backdoor, ...</p>
+				<p>Zielrechner: Eindringen in das System</p>
+				<p>In beiden Fällen:
+					<ul>
+						<li>Alle Daten lesbar (Tastendrücke, Datenbanken, etc.)</li>
+						<li>Rechner "gehört" nun jemand anderem</li>
+						<li>Häufig nur durch sorgfältige Reinstallation zu beseitigen</li>
+					</ul>
+			</article>
+
+			<article>
+				<h3>Was schiefgehen kann: Browser</h3>
+				<p><img src="assets/ssl-chain-browser.jpg" width="25%" align="right" />
+				Malware im System kann...
+					<ul>
+						<li>Netzwerkverkehr abhören (ist aber verschlüsselt)</li>
+						<li>Tastendrücke mitschneiden (herstellen des Zusammenhangs schwierig)</li>
+					</ul>
+				Integration / Manipulation des Browsers einfacher! (Man-in-the-Browser-Angriff)
+				</p>
+				<p>
+					<ul>
+						<li>Mitschneiden, Manipulieren von Anzeige und Eingabe</li>
+						<li>Installation neuer Root-Zertifikate</li>
+						<li>Manipulation von Bookmarks</li>
+					</ul>
+				</p>
+			</article>
+
+			<article>
+				<h3>Was schiefgehen kann: Verbindung</h3>
+				<p><img src="assets/ssl-chain-net.jpg" width="25%" align="right" />
+				Verbindung: Im LAN, Internet-Cafe, Router des ISPs, Proxy der Firma, ...</p>
+				<p>Man-in-the-Middle: Abhören und/oder manipulieren</p>
+				<br />
+				<div class="build">
+					<h4>Aber unsere Verbindung ist doch verschlüsselt... oder?</h4>
+				</div>
+			</article>
+
+			<article>
+				<h3>Verhindern des Wechsels auf ssl</h3>
+				<p><a href="http://www.thoughtcrime.org/software/sslstrip/">sslstrip</a> agiert als transparenter Proxy</p>
+				<p>Parst durchlaufende Daten</p>
+				<p>Ersetzt alle https-Links durch http</p>
+				<p>Bei vielen Websites sind alle Seiten sowohl per http als auch per https abrufbar</a>
+				<p>Folgt man nur den Links, gelangt man nun nie auf die verschlüsselte Seite</p>
+				<p>Ganz fatal bei eingebetteten Formularen</p>
+				<p>&rArr; Wichtige URLs immer prüfen!</p>
+			</article>
+
+			<article>
+				<h3>Demo: sslstrip</h3>
+				<section>
+					<p>
+						<img src="assets/ssl-studivz-login.png" width="20%" />
+						<img src="assets/ssl-studivz-ohnesslstrip.png" width="70%" />
+					</p>
+				</section>
+				<div class="build">
+					<section>
+						<p>
+							...und mit sslstrip:<br />
+							<img src="assets/ssl-studivz-mitsslstrip.png" class="centered" width="80%" /><br />
+							<img src="assets/ssl-studivz-log.png" class="centered" width="80%" />
+						</p>
+					</section>
+				</div>
+			</article>
+
+			<article>
 				<h3>Was kann wo schiefgehen?</h3>
 				<ul>
 				<li>Mensch: Social engineering, falscher Link, ...</li>
