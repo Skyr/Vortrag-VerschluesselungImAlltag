@@ -229,18 +229,62 @@
 			</article>
 
 			<article>
-				<h3>Was kann wo schiefgehen?</h3>
-				<ul>
-				<li>Mensch: Social engineering, falscher Link, ...</li>
-				<li>Browser: "Man in the browser": Böses Plugin, falsches Zertifikat, manipulierte Einstellungen</li>
-				<li>Rechner: Malware (Keylogger, ...)</li>
-				<li>Verbindung: Man in the middle (abhören, verändern)</li>
-				<li>Zielrechner: Kompromittiert</li>
-				</ul>
+				<h3>Man-in-the-middle erzeugt eigene Zertifikate</h3>
+				<p><a href="http://www.thoughtcrime.org/software/sslsniff/">sslsniff</a>, <a href="http://monkey.org/~dugsong/dsniff/">webmitm</a>, ...: Ebenfalls transparente Proxy</p>
+				<p>Besitzen/erstellen eigene CA</p>
+				<p>Beschreibungstext in CA: Beliebig!</p>
+				<p>Beim Verbindungsaufbau: Neues Zertifikat für Seite generieren</p>
+				<p>Browserwarnung (wenn CA unbekannt)</a>
+				<p>&rArr; Bei Browserwarnung: Höchste Alarmstufe, nicht einfach wegklicken!</p>
 			</article>
 
 			<article>
-				<h3>Convergence - Alternative zur CA</h3>
+				<h3>Trusted CAs in den Händen der falschen</h3>
+				<p>Man in the middle + im Browser hinterlegte CA:</p>
+				<p class="build"><img class="centered" src="assets/great-job-youre-fucked.jpg" width="70%" /></p>
+			</article>
+
+			<article>
+				<h3>Trusted CAs in den Händen der falschen</h3>
+				<p>Eines der Probleme: Jede CA (root und intermediary) darf beliebige Zertifikate ausstellen</p>
+				<br />
+				<div class="build">
+					<p><a href="https://www.eff.org/deeplinks/2011/05/syrian-man-middle-against-facebook">Syrien erlangte Zertifikate für einige Seiten</a> (Facebook, Google, Tor, ...)</p>
+					<p>Einige CAs (z.B. <a href="http://www.heise.de/security/meldung/Ueber-500-Zertifikate-Ausmass-des-CA-Hacks-schlimmer-als-erwartet-1336603.html">Diginotar</a> oder <a href="http://www.reuters.com/article/2012/02/02/us-hacking-verisign-idustre8110z820120202">Verisign</a>) wurden in jüngster Zeit kompromittiert</p>
+					<p><a href="http://www.heise.de/newsticker/meldung/Trustwave-verkaufte-Man-in-the-Middle-Zertifikat-1429722.html">Trustwave verkaufte Intermediate-CA-Zertifikate</a> - angeblich an Firmen, angeblich gängige Praxis</p>
+					<p>Viele CAs, teils Firmen, teils von Regierungen</p>
+				</div>
+			</article>
+
+			<article>
+				<h3>Mögliche Auswege und Workarounds</h3>
+				<p>Bei wichtigen Seiten: Fingerprint des Zertifikats von Hand prüfen</p>
+				<ul>
+					<li>Unbequem und aufwendig</li>
+					<li>Woher die korrekte Information nehmen?</li>
+				</ul>
+				<br />
+				<div class="build">
+					<section>
+						<p>Sticky Certificates</p>
+						<ul>
+							<li>Browser speichert Zertifikat beim ersten Kontakt</li>
+							<li>Problem: Neues Serverzertifikat von Angriff nicht unterscheidbar</li>
+						</ul>
+					</section>
+				</div>
+			</article>
+
+			<article>
+				<h3><a href="http://convergence.io/">Convergence</a> - Alternative zur CA-Hierarchie</h3>
+				<p>Idee: Ein Man in the Middle kann nicht alle Verbindungen zu einem Ziel angreifen</p>
+				<p>Im Netz verteilte Notare fragen das Zertifikat eines Ziels ab und liefern es dem Browser</p>
+				<p>Browser prüft Übereinstimmung aller Notarantworten</p>
+				<p>Benutzer wählt Notare selbst</p>
+				<ul>
+					<li>Problem: Auswahl der Notare, initiales Vertrauen (Schlüsselaustausch)</li>
+					<li>Je dichter der Angreifer an seinem Opfer, desto größer die Chance, die Notare täuschen zu können</li>
+				</ul>
 			</article>
 		</section>
 
@@ -377,6 +421,7 @@
 					<li><a href="http://www.flickr.com/photos/torkildr/3462606643/">"Server room at CERN"</a> CC BY-SA Torkild Retvedt</li>
 					<li><a href="http://www.flickr.com/photos/ngernelle/3250962087/">"Undead geek"</a> CC BY Nourdine Gernelle</li>
 					<li><a href="http://www.flickr.com/photos/jimwhimpey/271115180/">"Desktop 20061016"</a> CC BY Jim Whimpey</li>
+					<li><a href="http://troll.me/great-job-youre-fucked/">"Great job"</a> from troll.me</li>
 				</ul>
 			</article>
 		</section>
