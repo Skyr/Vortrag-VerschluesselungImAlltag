@@ -28,6 +28,8 @@
 	<script src='lib/slides.js'></script>
 	<style type="text/css">
 		.label {position:absolute;padding:2px;background-color:rgba(255,255,255,0.6);box-shadow:1px 1px 2px 2px rgba(0,0,0,0.4)}
+		div.smaller {font-size:60%}
+		div.smaller p {margin-top:5px}
 	</style>
 	<title>Verschlüsselung im Alltag</title>
 </head>
@@ -297,7 +299,38 @@
 			</article>
 
 			<article>
-				<h3>Schlüssel und Keyserver</h3>
+				<h3>Pretty Good Privacy (PGP)</h3><img src="assets/prz_closeup.jpg" align="right" width="25%" />
+				<p>E-Mails: Die Postkarten des Internets:<br/>Keine Ende-zu-Ende-Verschlüsselung</p>
+				<p>Pretty Good Privacy: Projekt von Phil Zimmermann, 1991 begonnen</p>
+				<p>Funktionierte so gut, daß er in die Mühlen der US-Dienste geriet :-)</p>
+				<p>Gründung der Firma pgp.com, Verkauf an Symantec</p>
+				<p>Freie Implementierung: <a href="http://www.gnupg.org/">Gnu Privacy Guard</a></p>
+				<br />
+				<div class="smaller">
+				<p>In Linux-Distros dabei, Binaries für <a href="http://www.gpg4win.org/">Windows (incl. Support für Outlook 2003/2007)</a>, <a href="http://www.gpgtools.org/">MacOS</a></p>
+				<p>Direkter Support durch einige Mailprogramme (wie mutt oder <a href="http://www.claws-mail.org/">Claws</a>), Plugins z.B. für <a href="https://addons.mozilla.org/de/thunderbird/addon/enigmail/">Thunderbird</a></p>
+				</div>
+			</article>
+
+			<article>
+				<h3>PGP-Schlüssel</h3>
+				<p>Public-Key-Verfahren: Public Key und Secret Key</p>
+				<pre>
+pub   1024D/0x75FD7074 2004-12-31 [expires: 2013-01-01]
+uid [ultimate] Stefan Schlott (PGP mail only) &lt;stefan.pgp@ploing.de&gt;
+uid [ultimate] Stefan Schlott &lt;stefan.schlott@ulm.ccc.de&gt;
+sub   3072g/0xE9D795D0 2004-12-31 [expires: 2013-01-01]</pre>
+				<ul>
+				<li>Schlüssel-ID (0x...)</li>
+				<li>Hauptkey (Signieren von Inhalten und Schlüsseln), Subkey (Verschlüsselung)</li>
+				<li>Ablaufdatum</li>
+				<li>Identities (uid): Name, ggf. Kommentar, Mailadresse</li>
+				<li>Trust-Info nicht Teil des Schlüssels (lokal gespeichert)</li>
+				</ul>
+			</article>
+
+			<article>
+				<h3>Keyserver</h3>
 				Schlüssel generieren, unterschiedliche Verfahren, Key-ID und Fingerprint, Keyserver als Telefonbuch, Mailadresse dort sichtbar (Spam!)
 			</article>
 
@@ -406,7 +439,7 @@
 
 		<section>
 			<article class="smaller">
-				<h3>Bildnachweise</h3>
+				<h3>Bildnachweise (1)</h3>
 				<ul>
 					<li><a href="http://ayephone.posterous.com/ikon-iphoneography-mobilephonegraphy">Titelbild "Ikon"</a> mit freundlicher Genehmigung von Karsten Leverkuhn</li>
 					<li><a href="http://www.flickr.com/photos/lwr/35586563/">"Keys"</a> CC BY-NC-SA Leo Reynolds</li>
@@ -421,8 +454,15 @@
 					<li><a href="http://www.flickr.com/photos/torkildr/3462606643/">"Server room at CERN"</a> CC BY-SA Torkild Retvedt</li>
 					<li><a href="http://www.flickr.com/photos/ngernelle/3250962087/">"Undead geek"</a> CC BY Nourdine Gernelle</li>
 					<li><a href="http://www.flickr.com/photos/jimwhimpey/271115180/">"Desktop 20061016"</a> CC BY Jim Whimpey</li>
+				</ul>
+			</article>
+
+			<article class="smaller">
+				<h3>Bildnachweise (2)</h3>
+				<ul>
 					<li><a href="http://troll.me/great-job-youre-fucked/">"Great job"</a> from troll.me</li>
 					<li><a href="http://www.flickr.com/photos/kendrahw/2638843191/">"First Aid sign"</a> CC BY-NC kendrahw</li>
+					<li><a href="http://en.wikipedia.org/wiki/File:PRZ_closeup_cropped.jpg">Bild von Phil Zimmerman</a> GNU Free Document License</li>
 				</ul>
 			</article>
 		</section>
