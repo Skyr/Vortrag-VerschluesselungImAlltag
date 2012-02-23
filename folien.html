@@ -232,9 +232,9 @@
 
 			<article>
 				<h3>Man-in-the-middle erzeugt eigene Zertifikate</h3>
-				<p><a href="http://www.thoughtcrime.org/software/sslsniff/">sslsniff</a>, <a href="http://monkey.org/~dugsong/dsniff/">webmitm</a>, ...: Ebenfalls transparente Proxy</p>
+				<p><a href="http://www.thoughtcrime.org/software/sslsniff/">sslsniff</a>, <a href="http://monkey.org/~dugsong/dsniff/">webmitm</a>, <a href="https://github.com/hubert3/iSniff">iSniff</a>, ...: Ebenfalls transparente Proxy</p>
 				<p>Besitzen/erstellen eigene CA</p>
-				<p>Beschreibungstext in CA: Beliebig!</p>
+				<p>Beschreibungstext in CA beim Erstellen: Beliebig!</p>
 				<p>Beim Verbindungsaufbau: Neues Zertifikat für Seite generieren</p>
 				<p>Browserwarnung (wenn CA unbekannt)</a>
 				<p>&rArr; Bei Browserwarnung: Höchste Alarmstufe, nicht einfach wegklicken!</p>
@@ -321,53 +321,138 @@ uid [ultimate] Stefan Schlott (PGP mail only) &lt;stefan.pgp@ploing.de&gt;
 uid [ultimate] Stefan Schlott &lt;stefan.schlott@ulm.ccc.de&gt;
 sub   3072g/0xE9D795D0 2004-12-31 [expires: 2013-01-01]</pre>
 				<ul>
-				<li>Schlüssel-ID (0x...)</li>
-				<li>Hauptkey (Signieren von Inhalten und Schlüsseln), Subkey (Verschlüsselung)</li>
-				<li>Ablaufdatum</li>
-				<li>Identities (uid): Name, ggf. Kommentar, Mailadresse</li>
-				<li>Trust-Info nicht Teil des Schlüssels (lokal gespeichert)</li>
+					<li>Schlüssel-ID (0x...)</li>
+					<li>Hauptkey (Signieren von Inhalten und Schlüsseln), Subkey (Verschlüsselung)</li>
+					<li>Ablaufdatum</li>
+					<li>Identities (uid): Name, ggf. Kommentar, Mailadresse</li>
+					<li>Trust-Info nicht Teil des Schlüssels (lokal gespeichert)</li>
 				</ul>
 			</article>
 
 			<article>
-				<h3>Keyserver</h3>
-				Schlüssel generieren, unterschiedliche Verfahren, Key-ID und Fingerprint, Keyserver als Telefonbuch, Mailadresse dort sichtbar (Spam!)
+				<h3>Schlüssel erzeugen</h3>
+				<p>Verschiedene Verfahren: RSA, DSA/ElGamal
+				<ul>
+					<li>Heute kein großer Unterschied mehr (Verbreitung, Patente)</li>
+					<li>Key auf Smartcard: RSA bevorzugen</li>
+				</ul></p>
+				<p>Schlüssellänge: Lieber zu groß :-)</p>
+				<p>Erzeugung braucht "gute" Zufallszahlen.<br />Idealerweise nicht auf einem frisch gestarteten Rechner durchführen.</p>
+				<p>Sicherung mit Passphrase (Mantra)</p>
 			</article>
 
 			<article>
-				<h3>Web of Trust</h3>
-				Problem: Habe ich den richtigen Schlüssel?
-				Keine zentrale Instanz wie bei SSL, sondern Web of Trust
-				Direkte Authentisierung durch Signieren von Schlüsseln
-				Indirekte Authentisierung durch Vertrauen in Zuverlässigkeit anderer
+				<h3>Desaster-Vorkehrungen</h3>
+				<p>Was passiert, wen...
+				<ul>
+					<li>Ich mein Mantra vergesse?</li>
+					<li>Mein Secret Key (samt aller Backups) verloren geht?</li>
+					<li>Secret Key und Mantra in die falschen Hände fallen?</li>
+				</ul>
+				</p>
+				<div class="build">
+					<p>Dein persönliches Problem! Treffe Vorkehrungen!</p>
+					<p>Ablaufdatum (kann nachträglich geändert werden): Begrenzt den Schaden</p>
+					<p>Erzeuge ein "Key Revocation Certificate" und hebe es an sicherer Stelle auf: Spezielles Zertifikat, mit dem man seinen eigenen Schlüssel für ungültig erklärt</p>
+				</div>
+			</article>
+
+			<article>
+				<h3>Keyserver - das "Telefonbuch" für PGP</h3>
+				<p>Ich will jemandem schreiben und brauche seinen Public Key... woher bekomme ich den?</p>
+				<ul>
+					<li>Homepage</li>
+					<li>Per Mail fragen</li>
+					<li><a href="http://keys.gnupg.net/">Keyserver</a>!</li>
+				</ul>
+				<p>Suchmöglichkeiten: Name, E-Mail, Schlüssel-ID</p>
+				<p>Mailadresse auf Keyserver sichtbar (mögliche Spam-Quelle)</p>
+			</article>
+
+			<article>
+				<h3>Habe ich den richtigen Schlüssel?</h3>
+				<p>Keine zentrale Instanz wie bei SSL, sondern Web of Trust</p>
+				<ul>
+					<li>Direkte Authentisierung: Persönlicher Austausch, Überprüfung, Signieren von Schlüsseln</li>
+					<li>Indirekte Authentisierung durch Vertrauen in Zuverlässigkeit anderer</li>
+				</ul>
 			</article>
 
 			<article>
 				<h3>Direktes Vertrauen: Schlüssel signieren</h3>
-				Überprüfung der Identität, Abgleich mit Schlüsseldaten
-				Signieren, Angeben über Genauigkeit der Prüfung
-				Festlegen des Vertrauensgrads in die Sorgfalt bei der Prüfung anderer
+				<p>Überprüfung des Schlüssels mit Fingerprint (auf authentischem Weg austauschen, z.B. am Telefon vorlesen oder persönliche Übergabe)</p>
+				<pre class="noprettyprint">
+pub   1024D/0x75FD7074 2004-12-31 [expires: 2013-01-01]
+      Key fingerprint = 9548 55E2 AC01 4862 BFE4  
+                        670E FDF4 4AE8 75FD 7074</pre>
+				<p>Festhalten dieses Wissens durch Signatur des Schlüssels</p>
+				<p>Signatur kann weitergegeben werden: Wissen für andere verfügbar</p>
 			</article>
 
 			<article>
 				<h3>Transitives Vertrauen: Web of Trust</h3>
-				Festlegen des Vertrauensgrads in die Sorgfalt bei der Prüfung anderer
-				"Parital trust" und "Full trust"
-				Schlüssel mit Signaturen von jemandem mit "Full trust" werden als veriziert betrachtet
-				Schlüssel mit Signaturen zwei Leuten mit "Partial trust" werden als veriziert betrachtet
-				Als verifiziert betrachtete Schlüssel können wiederum weitere Schlüssel verifizieren, wenn diesen ensprechendes Vertrauen ausgesprochen wird (siehe 1. Schritt)
+				<p>Festlegen des Vertrauensgrads in die Sorgfalt bei der Prüfung anderer: "Partial Trust" / "Full Trust"</p>
+				<p>Vertrauen wird nur berücksichtigt, wenn ein Schlüssel als verifiziert gilt:</p>
+				<ul>
+					<li>Selbst signiert</li>
+					<li>Trägt Unterschrifte von einem verifizierten Schlüssel mit "Full Trust"</li>
+					<li>Trägt zwei Unterschriften von verifizierten Schlüsseln mit "Partial Trust"</li>
+				</ul>
+				<p>PGP warnt bei der Verwendung nicht verifizierter Schlüssel</p>
 			</article>
 
 			<article>
-				<h3>Web of Trust - Beispiele</h3>
+				<h3>Web of Trust - Beispiel</h3>
+				<p>
+					<img src="assets/web-of-trust-1.svg" class="centered" width="80%" /><br />
+					Alle direkt signierten Schlüssel gelten als verifiziert
+				</p>
+				<p>
+					<img src="assets/web-of-trust-legende.svg" class="centered" width="80%" />
+				</p>
+			</article>
+
+			<article>
+				<h3>Web of Trust - Beispiel</h3>
+				<p>
+					<img src="assets/web-of-trust-2.svg" class="centered" width="80%" /><br />
+					Armin ist verifiziert + volles Vertrauen: Dirk verifiziert
+				</p>
+				<p>
+					<img src="assets/web-of-trust-legende.svg" class="centered" width="80%" />
+				</p>
+			</article>
+
+			<article>
+				<h3>Web of Trust - Beispiel</h3>
+				<p>
+					<img src="assets/web-of-trust-3.svg" class="centered" width="80%" /><br />
+					Vertrauensinfo alleine: Bernd noch nicht zertifiziert!
+				</p>
+				<p>
+					<img src="assets/web-of-trust-legende.svg" class="centered" width="80%" />
+				</p>
+			</article>
+
+			<article>
+				<h3>Web of Trust - Beispiel</h3>
+				<p>
+					<img src="assets/web-of-trust-4.svg" class="centered" width="80%" /><br />
+					Erst durch (mindestens) teilweises Vertrauen in Claus werden Erwin und Frank verizifiert
+				</p>
 			</article>
 
 			<article>
 				<h3>"Pseudo-CAs"</h3>
-				Mit Web of Trust kann das CA-Modell nachgebildet werden (nicht aber umgekehrt)
-				Beispiele: Heise-Kryptokampagne, CAcert
+				<p>Mit Web of Trust kann das CA-Modell nachgebildet werden (nicht aber umgekehrt)</p>
+				<p><em>Introducer:</em> Vertrauenswürdige Person, die viele weitere Schlüssel signiert hat</p>
+				<ul>
+					<li>Gut vermaschte Schlüssel in Freundeskreis, Club, Verein: Jeder beliebige</li>
+					<li><a href="http://www.heise.de/security/dienste/Krypto-Kampagne-2111.html">Heise-Kryptokampagne</a> (seit 1997! Danke, Heise!)</li>
+					<li><a href="http://wiki.cacert.org/PgpSigning">PGP-Signatur</a> von <a href="http://www.cacert.org/">CAcert</a></li>
+				</ul>
 			</article>
-
+<!--
 			<article>
 				<h3>Keysigning Party - möglicher Ablauf</h3>
 				Im Vorfeld: Sammeln der Schlüssel aller Teilnehmer
@@ -376,6 +461,7 @@ sub   3072g/0xE9D795D0 2004-12-31 [expires: 2013-01-01]</pre>
 				Aufstellen in zwei Reihen, jeder überprüft sein Gegenüber (auf seiner Kopie der Liste markieren), dann eine Person nach rechts wechseln
 				Zu Hause: Überprüfte Schlüssel signieren und wieder auf Schlüsselserver hochladen
 			</article>
+-->
 		</section>
 
 		<section>
@@ -388,32 +474,35 @@ sub   3072g/0xE9D795D0 2004-12-31 [expires: 2013-01-01]</pre>
 
 			<article>
 				<h3>Off The Record Nachrichtenprotokoll</h3>
-				"Overlay-Protokoll" über jedem (beliebigen) Chatprotokoll
-				Als Plugin für verschiedene Chatclients verfügbar
-				Sendet und erkennt speziell formatierte Textnachrichten
+				<p>"Overlay-Protokoll" über jedem (beliebigen) Chatprotokoll</p>
+				<p>Als <a href="http://www.cypherpunks.ca/otr/">Bibliothek und Plugin für verschiedene Chatclients</a> verfügbar</p>
+				<p>Verschlüsselung, Authentisierung</p>
+				<p>Deniability: Außenstehende erhalten kein Indiz über die eigene Identität</p>
+				<p>Perfect Forward Secrecy: Selbst bei Verlust der eigenen Schlüssel können alte (mitgeschnittene) Sitzungen nicht entschlüsselt werden</p>
 			</article>
 
 			<article>
 				<h3>Aufbau der Verbindung</h3>
-				Bei der ersten Nutzung: Public-Key-Paar generieren
-				Verbindungsaufbau manuell oder durch automatische Erkennung (charakteristische Folge von Whitespace am Ende einer normalen Nachricht)
-				Aushandeln eines Sitzungsschlüssels
-				Dann: Unauthentisierte Verbindung
+				<p>Bei der ersten Nutzung: Public-Key-Paar generieren</p>
+				<p>Verbindungsaufbau im Chatclient: Manuell oder durch automatische Erkennung (charakteristische Folge von Whitespace am Ende einer normalen Nachricht)</p>
+				<p>Austausch der Public Keys, Aushandeln eines Sitzungsschlüssels</p>
+				<p>Dann: Unauthentisierte Verbindung</p>
 			</article>
 
 			<article>
 				<h3>Überprüfung seines Gegenübers</h3>
-				Wieder dieselbe Frage: Spreche ich mit dem richtigen?
-				Authentisierung über zweiten Kanal (z.B. Telefon), Austausch von Fingerprints
-				Information über erfolgreiche Überprüfung wird lokal gespeichert
-				Kein Web of Trust, etc.
+				<p>Wieder dieselbe Frage: Spreche ich mit dem richtigen?</p>
+				<p>Authentisierung über zweiten Kanal (z.B. Telefon), Austausch von Fingerprints</p>
+				<p>Information über erfolgreiche Überprüfung wird lokal gespeichert</p>
+				<p>Kein Web of Trust, etc.</p>
 			</article>
 
 			<article>
 				<h3>Vorsichtsmaßnahmen</h3>
-				Beim Beenden einer Verbindung: Aufpassen, daß man nicht versehentlich unverschlüsselt weitertippt
-				Manche Clients verhindern dies
-				Vorsicht: Chatprotokolle werden im Klartext gespeichert (aktuelles Negativbeispiel: <a href="http://www.gulli.com/news/17735-bradley-manning-vierter-tag-der-anhoerung-7-update-2011-12-20">Bradley Manning</a>)
+				<p>Beim Beenden einer Verbindung: Aufpassen, daß man nicht versehentlich unverschlüsselt weitertippt (manche Clients verhindern dies)</p>
+				<p>Vorsicht: OTR sichert nur die Übertragung über das Netzwerk! Keine Sicherung der Chatprotokolle des Clients!</p> 
+				<p>Chatprotokolle werden typischerweise im Klartext gespeichert (aktuelles Negativbeispiel: <a href="http://www.gulli.com/news/17735-bradley-manning-vierter-tag-der-anhoerung-7-update-2011-12-20">Bradley Manning</a>)</p>
+				<p>&rArr; Häufig gehörte Empfehlung: Solche vertraulichen Chats nicht protokollieren (wirklich "Off the record")</p>
 			</article>
 		</section>
 
