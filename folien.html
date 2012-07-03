@@ -5,14 +5,14 @@
 
   Authors: Luke Mahé (code)
            Marcin Wichary (code and design)
-           
+
            Dominic Mazzoni (browser compatibility)
            Charles Chen (ChromeVox support)
 
   URL: http://code.google.com/p/html5slides/
 -->
 <!--
-  UUlm Style 
+  UUlm Style
 
   Author: Benjamin Erb
 
@@ -43,18 +43,91 @@
 				<h1 id="title">Verschlüsselung im Alltag</h1>
 				<h2 id="author">Stefan Schlott</h2>
 				<p>
-					<img id="title-header" src='assets/title.jpg' /> 
+					<img id="title-header" src='assets/title.jpg' />
 					<img id="cccs-logo" src='lib/cccs/logo.png' />
 					<img id="title-license" src='assets/cc.by-nc-sa.eu.svg' />
 				</p>
 			</article>
-		
+
 			<article>
 				<h3>Contents</h3>
 				<nav class="toc" />
 			</article>
 		</section>
-		
+
+		<section>
+      <header>Der CCC</header>
+
+      <article class="fill">
+				<p>
+					<img src='assets/chaosknoten.svg' height="100%"/>
+        </p>
+        <aside>
+          <ul>
+            <li>CCC gegründet Mitte der 80er</li>
+            <li>Ideen, Forscherdrang und Kreativität von Hackern unterstützen</li>
+            <li>Bundesweit organisiert in örtliche Erfas und Chaostreffs</li>
+          </ul>
+        </article>
+      </article>
+
+      <article class="fill">
+        <h3>Technik</h3>
+				<p>
+					<img src='assets/ccc-technik.jpg' width="100%"/>
+        </p>
+        <aside>
+          <ul>
+            <li>Gleichgesinnte Technik-Faszinierte</li>
+            <li>Hack: „Kreativer Mißbrauch von Technik“</li>
+            <li>Entwickelte sich zum Sprachrohr der dt. Hackerszene</li>
+          </ul>
+        </aside>
+      </article>
+
+      <article class="fill">
+        <h3>Kunst und Kultur</h3>
+				<p>
+					<img src='assets/ccc-kunst.jpg' width="100%"/>
+        </p>
+        <aside>
+          <ul>
+            <li>Aus Technik entsteht auch Kunst!</li>
+          </ul>
+        </aside>
+      </article>
+
+      <article class="fill">
+        <h3>Politik und Gesellschaft</h3>
+				<p>
+					<img src='assets/ccc-politik.jpg' width="100%"/>
+        </p>
+        <aside>
+          <ul>
+            <li>Der CCC mischt sich gesellschaftlich ein</li>
+            <li>Politische Proteste</li>
+            <li>Geschätzter Sachverständiger, z.B. in Enquete-Kommission und Gutachter für das BVerfG</li>
+          </ul>
+        </aside>
+      </article>
+
+      <article class="fill">
+        <h3>Chaos macht Schule</h3>
+				<p>
+					<img src='assets/CMS_final_tafel.svg' width="100%"/>
+        </p>
+        <aside>
+          <ul>
+            <li>CMS: Idee seit 2008</li>
+            <li>Mantelprojekt im überregionalen CCC, um Aktionen zu koordinieren und Infos und Material auszutauschen</li>
+            <li>Übliche Themen: Umgang mit Medien und Daten; Privatsphäre; „Internet-Gefahren“; Soziale Netze</li>
+            <li>Aber auch Spaß an der Technik mit Hardware-Basteleien, „Computer-Führerschein“, etc.</li>
+            <li>Hilfe zur Selbsthilfe: Lehrer (und andere Multiplikatoren) mit Material und Hintergrundwissen ausstatten</li>
+          </ul>
+        </aside>
+      </article>
+		</section>
+
 		<section>
 			<header>Grundlagen</header>
 
@@ -385,7 +458,7 @@ sub   3072g/0xE9D795D0 2004-12-31 [expires: 2013-01-01]</pre>
 				<p>Überprüfung des Schlüssels mit Fingerprint (auf authentischem Weg austauschen, z.B. am Telefon vorlesen oder persönliche Übergabe)</p>
 				<pre class="noprettyprint">
 pub   1024D/0x75FD7074 2004-12-31 [expires: 2013-01-01]
-      Key fingerprint = 9548 55E2 AC01 4862 BFE4  
+      Key fingerprint = 9548 55E2 AC01 4862 BFE4
                         670E FDF4 4AE8 75FD 7074</pre>
 				<p>Festhalten dieses Wissens durch Signatur des Schlüssels</p>
 				<p>Signatur kann weitergegeben werden: Wissen für andere verfügbar</p>
@@ -523,7 +596,7 @@ pub   1024D/0x75FD7074 2004-12-31 [expires: 2013-01-01]
 			<article>
 				<h3>Vorsichtsmaßnahmen</h3>
 				<p>Beim Beenden einer Verbindung: Aufpassen, daß man nicht versehentlich unverschlüsselt weitertippt (manche Clients verhindern dies)</p>
-				<p>Vorsicht: OTR sichert nur die Übertragung über das Netzwerk! Keine Sicherung der Chatprotokolle des Clients!</p> 
+				<p>Vorsicht: OTR sichert nur die Übertragung über das Netzwerk! Keine Sicherung der Chatprotokolle des Clients!</p>
 				<p>Chatprotokolle werden typischerweise im Klartext gespeichert (aktuelles Negativbeispiel: <a href="http://www.gulli.com/news/17735-bradley-manning-vierter-tag-der-anhoerung-7-update-2011-12-20">Bradley Manning</a>)</p>
 				<p>&rArr; Häufig gehörte Empfehlung: Solche vertraulichen Chats nicht protokollieren (wirklich "Off the record")</p>
 			</article>
